@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav{
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        nav ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li{
+            display: inline-block;
+            margin-right: 10px;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: #000;
+        }
+        .products{
+            width: 100%;
+            height: auto;
+            padding: 10px;
+        }
+        .product{
+            width: 22%;
+            height: auto;
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;  
+        }
+        .search-box{
+            width: 100%;
+            height: auto;
+            padding: 10px;
+        }
+        .search-box input{
+            width: 80%;
+            height: auto;
+            padding: 10px;
+            float: left;
+            border: 1px solid #ccc;
+
+        }
+        .search-box button{
+            width: 15%;
+            height: auto;
+            float: left;
+            padding: 10px;
+            border: 1px solid #000;
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- create navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- end navigation -->
+    <!--search box-->
+    <div class="search-box">
+        <input type="text" id="search_input" placeholder="Search">
+        <button type="button" name="submit" onclick="search()" value="Search">Search</button>
+    </div>
+    <br><br>
+    <div id="products" class="products"></div>
+
+<script>
+    function getAll(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = this.responseText;
+                //convert xml to array
+                var xml = new DOMParser().parseFromString(response, "text/xml");
+                var products = xml.getElementsByTagName("product");
+                //loop through array
+                for (var i = 0; i < products.length; i++) {
+                    var product = products[i];
+                    var name = product.getElementsByTagName("name")[0].textContent;
+                    var price = product.getElementsByTagName("price")[0].textContent;
+                    var description = product.getElementsByTagName("description")[0].textContent;
+                    var code = product.getElementsByTagName("code")[0].textContent;
+                    var qty = product.getElementsByTagName("quantity")[0].textContent;
+                    //create html
+                    var html = "<div class='product'>" +
+                                "<h3>Name : " + name + "</h3>" +
+                                "<p> Description : " + description + "</p>" +
+                                "<p>Quantity : " + qty + "</p>" +
+                                "<p>Code : " + code + "</p>" +
+                                "<p>$" + price + "</p>" +
+                                "</div>";
+                    //append html to div
+                    document.getElementById("products").innerHTML += html;
+                }
+
+            }
+        };
+        xhttp.open("GET", "data.xml", true);
+        xhttp.send();    
+    }
+    getAll();
+    function search(){
+        var search = document.getElementById("search_input").value;
+        if(search.length > 0){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText;
+                    //convert xml to array
+                    var xml = new DOMParser().parseFromString(response, "text/xml");
+                    var products = xml.getElementsByTagName("product");
+                    document.getElementById("products").innerHTML = "Searching . . .";
+                    var search_res = 0;
+                    for (var i = 0; i < products.length; i++) {
+                        var product = products[i];
+                        var name = product.getElementsByTagName("name")[0].textContent;
+                        var price = product.getElementsByTagName("price")[0].textContent;
+                        var description = product.getElementsByTagName("description")[0].textContent;
+                        var code = product.getElementsByTagName("code")[0].textContent;
+                        var qty = product.getElementsByTagName("quantity")[0].textContent;
+                        if(code == search){
+                            var html = "<div class='product'>" +
+                                        "<h3>Name : " + name + "</h3>" +
+                                        "<p> Description : " + description + "</p>" +
+                                        "<p>Quantity : " + qty + "</p>" +
+                                        "<p>Code : " + code + "</p>" +
+                                        "<p>$" + price + "</p>" +
+                                        "</div>";
+                            //append html to div
+                            document.getElementById("products").innerHTML = html;
+                            search_res++;
+                        }
+                    }
+                    if(search_res == 0){
+                        document.getElementById("products").innerHTML = "No result found";
+                    }
+                }
+            };
+            xhttp.open("GET", "data.xml", true);
+            xhttp.send();    
+        }else{
+            getAll();
+        }
+        
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+        <category>category 1</category>
+        <code>000-01</code>
+        <name>product 1</name>
+        <description>description 1</description>
+        <quantity>10</quantity>
+        <price>100.00</price>
+    </product>
+    <product>
+        <category>category 2</category>
+        <code>000-02</code>
+        <name>product 2</name>
+        <description>description 2</description>
+        <quantity>20</quantity>
+        <price>200.00</price>
+    </product>
+    <product>
+        <category>category 3</category>
+        <code>000-03</code>
+        <name>product 3</name>
+        <description>description 3</description>
+        <quantity>30</quantity>
+        <price>300.00</price>
+    </product>
+    <product>
+        <category>category 4</category>
+        <code>000-04</code>
+        <name>product 4</name>
+        <description>description 4</description>
+        <quantity>40</quantity>
+        <price>400.00</price>
+    </product>
+    <product>
+        <category>category 5</category>
+        <code>000-05</code>
+        <name>product 5</name>
+        <description>description 5</description>
+        <quantity>50</quantity>
+        <price>500.00</price>
+    </product>
+    <product>
+        <category>category 6</category>
+        <code>000-06</code>
+        <name>product 6</name>
+        <description>description 6</description>
+        <quantity>60</quantity>
+        <price>600.00</price>
+    </product>
+    <product>
+        <category>category 7</category>
+        <code>000-07</code>
+        <name>product 7</name>
+        <description>description 7</description>
+        <quantity>70</quantity>
+        <price>700.00</price>
+    </product>
+    <product>
+        <category>category 8</category>
+        <code>000-08</code>
+        <name>product 8</name>
+        <description>description 8</description>
+        <quantity>80</quantity>
+        <price>800.00</price>
+    </product>
+    <product>
+        <category>category 9</category>
+        <code>000-09</code>
+        <name>product 9</name>
+        <description>description 9</description>
+        <quantity>90</quantity>
+        <price>900.00</price>
+    </product>
+    <product>
+        <category>category 10</category>
+        <code>000-10</code>
+        <name>product 10</name>
+        <description>description 10</description>
+        <quantity>100</quantity>
+        <price>1000.00</price>
+    </product>
+</products>

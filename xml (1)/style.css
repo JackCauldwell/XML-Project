@@ -1,0 +1,55 @@
+<style>
+        nav{
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        nav ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li{
+            display: inline-block;
+            margin-right: 10px;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: #000;
+        }
+        .products{
+            width: 100%;
+            height: auto;
+            padding: 10px;
+        }
+        .product{
+            width: 22%;
+            height: auto;
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;  
+        }
+        .search-box{
+            width: 100%;
+            height: auto;
+            padding: 10px;
+        }
+        .search-box input{
+            width: 80%;
+            height: auto;
+            padding: 10px;
+            float: left;
+            border: 1px solid #ccc;
+
+        }
+        .search-box button{
+            width: 15%;
+            height: auto;
+            float: left;
+            padding: 10px;
+            border: 1px solid #000;
+            background: #000;
+            color: #fff;
+        }
+    </style>
